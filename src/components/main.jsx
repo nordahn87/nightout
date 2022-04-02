@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 const Main = (props) => {
     return (
         <>
-            {props.children}
+            <main>
+                {props.children}
+            </main>
         </>
     );
 }
