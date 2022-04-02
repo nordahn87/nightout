@@ -1,20 +1,14 @@
 [
     {
-        "title": "item1"
+        "title": "Home",
+        "path": "/"
     },
     {
-        "title": "item2"
+        "title": "About me",
+        "path": "/about-me"
     },
     {
-        "title": "item3"
-    },
-    {
-        "title": "item4"
-    },
-    {
-        "title": "item5"
-    },
-    {
-        "title": "item6"
+        "title": "Contact",
+        "path": "/contact"
     }
 ]

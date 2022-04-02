@@ -1,9 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom';
+import { BrandLogo } from './svg'
 
 const Logo = (props) => {
+
     return (
-        <a href="/" className={props.className}>LOGO</a>
+        <NavLink
+            onClick={props.onClick}
+            to="/">
+            <BrandLogo className="logo"/>
+        </NavLink>
     );
 }
 
-export default Logo;
+export default Logo
