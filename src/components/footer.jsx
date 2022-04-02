@@ -5,7 +5,7 @@ import Logo from './misc/logo'
 const Footer = (props) => {
     return (
         <>
-            <div className='footer'>
+            <div className="bg-blue-400 h-[200px]">
                 <h2>Footer</h2>
                 <Logo />
                 <NavigationLinks />

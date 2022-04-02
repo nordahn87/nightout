@@ -11,6 +11,7 @@ const NavigationLinks = (props) => {
                         key={index}
                         title={item.title}
                         path={item.path}
+                        className={props.className}
                         toogleMobileNavigation={props.toogleMobileNavigation}
                     />
                 )

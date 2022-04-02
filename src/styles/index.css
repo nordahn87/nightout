@@ -1,57 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html {
   scroll-behavior: smooth;
 }
 
 #root > main{
-  min-height: 100vh;
+  min-height: 80vh;
 }
-
-.main-navigation {
-  background-color: aqua;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  position: fixed;
-  width: 100%;
-}
-
-.links {
-  display: flex;
-   color: aliceblue;
-  background-color: yellow;
-  
-}
-
-.links a:hover {
-    color: red;
-}
-
-.menu{
-  display: flex;
-  background-color: blue;
-  height: 40vh;
-  position: fixed;
- 
-}
-
-
-.show {
- top: 60px;
-  transition: all 0.2s ease-in-out;
-}
-
-.hide {
-  top: -100vh;
-   transition: all 0.2s ease-in-out;
-}
-
-.footer {
-  background-color: blueviolet;
-  display: flex;
-  width: 100%;
-  height: 500px;
-}
-
 
 .logo {
   width: 40px;
