@@ -10,6 +10,14 @@ html {
   min-height: 85vh;
 }
 
-.logo {
-  width: 40px;
+p {
+  @apply text-base
+}
+
+.transition-max-h {
+  transition: max-height 0.2s ease-in-out
+}
+
+.transition-test {
+  transition: 0.2s ease-in-out
 }

@@ -19,7 +19,8 @@ const Navigation = () => {
 
     return (
         <>
-            <nav className='bg-neutral-300 fixed flex w-full justify-between items-center p-4 z-50'>
+            <nav 
+                className='bg-neutral-300 fixed flex w-full justify-between items-center p-4 z-50'>
                 <Logo onClick={() => setMobileNavigation(false)} />
                 <div>
                     <div className="bg-neutral-100 hidden sm:flex gap-8">
