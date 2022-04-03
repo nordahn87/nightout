@@ -11,6 +11,12 @@ const Navigation = () => {
         setMobileNavigation(!mobileNavigation)
     }
 
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 640) {
+            setMobileNavigation(false)
+        }
+    })
+
     return (
         <>
             <nav className='bg-neutral-300 fixed flex w-full justify-between items-center p-4 z-50'>
