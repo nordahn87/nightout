@@ -8,7 +8,7 @@ const Logo = (props) => {
         <NavLink
             onClick={props.onClick}
             to="/">
-            <BrandLogo className="logo"/>
+            <BrandLogo className="w-[35px]" fill="gray" />
         </NavLink>
     );
 }
