@@ -15,14 +15,12 @@ const AccordionItem = (props) => {
                     className="bg-blue-300 flex justify-between p-4"
                     role="button"
                     onClick={toogleAccordion}>
-                    <h3>Overskrift</h3>
+                    <h3>{props.title}</h3>
                     {toggleleAccordion ? <p className="transition-test ">close</p> : <p className= "transition-test ">open</p>}
                 </div>
 
                 <div className="bg-red-300 flex flex-col px-4 py-6">
-                    {/* <p>{props.content}</p> */}
-                    <div>hej</div>
-                    <p>Minim in eiusmod fugiat sunt veniam non aute eiusmod. Officia sit pariatur duis cillum ullamco qui Lorem.</p>
+                    <p>{props.content}</p>
                 </div>
             </div>
         </>
