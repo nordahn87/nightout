@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const AboutMe = (props) =>  {
+const Drinks = (props) =>  {
     return ( 
         <>
          <h2>ABOUT ME</h2>
@@ -8,4 +8,4 @@ const AboutMe = (props) =>  {
      )
 }
 
-export default AboutMe
+export default Drinks

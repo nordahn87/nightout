@@ -3,7 +3,7 @@ import Navigation from './components/navigation'
 import Footer from './components/footer'
 import Main from './components/main'
 import Home from './components/home'
-import AboutMe from './components/about-me'
+import Drinks from './components/drinks'
 import Contact from './components/contact'
 import ScrollToTop from './components/misc/scroll-to-top'
 
@@ -17,8 +17,8 @@ const App = () => {
         <Main>
           <Routes>
             <Route index element={<Home />} />
-            <Route path="/about-me" element={<AboutMe />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/drinks" element={<Drinks />} />
+            <Route path="/kontakt" element={<Contact />} />
           </Routes>
         </Main>
       </ScrollToTop>

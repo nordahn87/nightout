@@ -1,9 +1,5 @@
 [
     {
-        "title": "Forside",
-        "path": "/"
-    },
-    {
         "title": "Drinks",
         "path": "/drinks"
     },

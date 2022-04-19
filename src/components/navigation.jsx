@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import NavigationLinks from './navigation/links'
 import Logo from './misc/logo'
-import { BurgerIcon, CloseIcon } from './misc/svg'
 
 const Navigation = () => {
 
@@ -20,25 +19,29 @@ const Navigation = () => {
     return (
         <>
             <nav 
-                className='bg-neutral-300 fixed flex w-full justify-between items-center p-4 z-50'>
-                <Logo onClick={() => setMobileNavigation(false)} />
+                className='bg-black fixed flex w-full justify-between items-center p-6 z-50'>
+                <Logo 
+                    className="text-white"
+                    onClick={() => setMobileNavigation(false)} />
                 <div>
-                    <div className="bg-neutral-100 hidden sm:flex gap-8">
+                    <div className="hidden sm:flex gap-8">
                         <NavigationLinks
-                            className="text-red-700 hover:text-blue-600"
+                            className="text-white hover:underline"
                         />
                     </div>
                     <button
                         className="sm:hidden flex justify-center items-center"
                         onClick={toogleMobileNavigation}>
-                        {mobileNavigation ? <CloseIcon className="w-[25px]" /> : <BurgerIcon className="w-[25px]" />}
+                        <i className={(mobileNavigation ? 'la-times' : 'la-bars') + ' las la-lg text-white'}></i>
                     </button>
-                </div>
+                </div> 
             </nav>
-            <nav className={(mobileNavigation ? 'top-0' : 'top-[-100vh]') + ' fixed bg-neutral-400 h-screen w-full flex justify-center items-center transition-all'}>
-                <div className="bg-neutral-100 flex flex-col gap-4">
+
+            {/* Mobile dropdown */}
+            <nav className={(mobileNavigation ? 'top-0' : 'top-[-100vh]') + ' fixed bg-black h-screen w-full flex justify-center items-center transition-all'}>
+                <div className="flex flex-col gap-4">
                     <NavigationLinks
-                        className="text-red-700 hover:text-blue-600"
+                        className="text-white text-lg hover:underline"
                         toogleMobileNavigation={toogleMobileNavigation} />
                 </div>
             </nav>

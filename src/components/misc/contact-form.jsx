@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from 'react'
-import { UserIcon } from '../misc/svg'
 import axios from 'axios';
 
 const ContactForm = (props) => {

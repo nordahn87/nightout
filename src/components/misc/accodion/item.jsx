@@ -9,21 +9,36 @@ const AccordionItem = (props) => {
     }
 
     return (
-        <>
-            <div className={(toggleleAccordion ? 'max-h-[400px] ' : 'max-h-[56px] ') + ' border max-w-[600px] overflow-hidden transition-max-h'}>
-                <div
-                    className="bg-blue-300 flex justify-between p-4"
-                    role="button"
-                    onClick={toogleAccordion}>
-                    <h3>{props.title}</h3>
-                    {toggleleAccordion ? <p className="transition-test ">close</p> : <p className= "transition-test ">open</p>}
-                </div>
+        // <>
+        //     <div className={(toggleleAccordion ? 'max-h-[200px] ' : 'max-h-[56px] ') + ' max-w-[800px] overflow-hidden transition-max-h border-last-child'}>
+        //         <div
+        //             className="bg-white text-lg flex justify-between items-center p-4 border border-neutral-300"
+        //             role="button"
+        //             onClick={toogleAccordion}>
+        //             <h3 className="hover:underline">{props.question}</h3>
+        //             <i className={(toggleleAccordion ? 'la-times' : 'la-plus') + ' las la-lg'}></i>
+        //         </div>
+        //         <div className="bg-black text-white flex flex-col px-4 py-6 border-x border-white ">
+        //             <p>{props.answer}</p>
+        //         </div>
+        //     </div>
+        // </>
 
-                <div className="bg-red-300 flex flex-col px-4 py-6">
-                    <p>{props.content}</p>
+        <section className="max-w-[900px] border-last-child">
+            <div
+                className="bg-white text-lg flex justify-between items-center p-4 border-t border-x border-neutral-300"
+                role="button"
+                onClick={toogleAccordion}>
+                <h3 className="hover:underline">{props.question}</h3>
+                <i className={(toggleleAccordion ? 'la-times' : 'la-plus') + ' las la-lg'}></i>
+            </div>
+            <div className={(toggleleAccordion ? 'max-h-[200px]' : 'max-h-0') + ' bg-black text-white overflow-hidden flex flex-col border-x border-white transition-max-h'}>
+                <div className="px-4 py-6">
+                    <p>{props.answer}</p>
                 </div>
             </div>
-        </>
+        </section >
+
     )
 }
 
