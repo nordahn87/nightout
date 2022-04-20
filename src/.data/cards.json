@@ -1,0 +1,23 @@
+[
+    {
+        "id" : "1",
+        "img": "./assets/table.jpg",
+        "alt": "Billede af en mørk trappe",
+        "title": "Overskrift 1",
+        "text": "Magna voluptate id cupidatat aliqua commodo magna magna dolore commodo eu Lorem."
+    },
+    {
+        "id": "2",
+        "img": "./assets/drinks.jpg",
+        "alt": "Billede af en drink",
+        "title": "Overskrift 2",
+        "text": "Commodo voluptate id cupidatat commodo aliqua."
+    },
+    {
+        "id": "3",
+        "img": "./assets/happy-girl.jpg",
+        "alt": "Billede af en smilende ung kvinde",
+        "title": "Overskrift 3",
+        "text": "Commodo voluptate id cupidatat commodo aliqua."
+    }
+]

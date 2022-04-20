@@ -24,9 +24,9 @@ const AccordionItem = (props) => {
         //     </div>
         // </>
 
-        <section className="max-w-[900px] border-last-child">
+        <section className="border-last-child border-hund">
             <div
-                className="bg-white text-lg flex justify-between items-center p-4 border-t border-x border-neutral-300"
+                className="bg-white text-lg flex justify-between items-center p-4 border-t  border-neutral-300"
                 role="button"
                 onClick={toogleAccordion}>
                 <h3 className="hover:underline">{props.question}</h3>

@@ -1,15 +1,21 @@
 import { useState, useEffect, useCallback } from 'react'
 import axios from 'axios';
 
-const ContactForm = (props) => {
+const ContactForm = () => {
 
+    const [firstNameValue, setFirstNameValue] = useState('')
+    const [lastNameValue, setLastNameValue] = useState('')
     const [emailValue, setEmailValue] = useState('')
     const [phoneValue, setPhoneValue] = useState('')
     const [messageValue, setMessageValue] = useState('')
-    const [errorDialogEmail, setErrorDialogEmail] = useState('')
-    const [errorDialogPhone, setErrorDialogPhone] = useState('')
-    const [errorDialogMessage, setErrorDialogMessage] = useState('')
-    const [succesDialog, setSuccesDialog] = useState('')
+
+
+    const [errFirstName, setErrFirstName] = useState('')
+    const [errLastNameValue, setErrLastNameValue] = useState('')
+    const [errEmail, setErrEmail] = useState('')
+    const [errPhone, setErrPhone] = useState('')
+    const [errMessage, setErrMessage] = useState('')
+    const [succes, setSucces] = useState('')
 
     // Handles form on submit
     const handleSubmit = useCallback((e) => {
@@ -19,7 +25,9 @@ const ContactForm = (props) => {
             return false
         }
 
-        axios.post('https://modelin.webexam-mcdm.dk/api/contacts', {
+        axios.post('https://nightout.webexam-mcdm.dk/api/contact', {
+            firstname: firstNameValue,
+            lastname: lastNameValue,
             email: emailValue,
             phone: phoneValue,
             message: messageValue,
@@ -27,23 +35,19 @@ const ContactForm = (props) => {
             .then((response) => {
                 console.log(response);
                 handleReset()
-                setSuccesDialog('Beskeden blev sendt')
+                setSucces('Beskeden blev sendt')
             })
-
             .catch((error) => {
                 console.log(error);
             })
 
-    }, [emailValue, messageValue, phoneValue])
+    }, [firstNameValue, lastNameValue, emailValue, phoneValue, messageValue])
 
     // Reset input
     const handleReset = () => {
         setEmailValue('')
         setPhoneValue('')
         setMessageValue('')
-        setErrorDialogEmail('')
-        setErrorDialogPhone('')
-        setErrorDialogMessage('')
     }
 
     // Validate input
@@ -51,76 +55,126 @@ const ContactForm = (props) => {
         const regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         let isValid = true
 
-        if (emailValue === '') {
-            setErrorDialogEmail("Du mangler at udfylde email")
-            isValid = false
-        } else if (!regex.test(emailValue)) {
-            setErrorDialogEmail("Indsæt venligst en gyldig email - Husk '@'")
+        if (firstNameValue === '') {
+            setErrFirstName("Indtast fornavn")
             isValid = false
         } else {
-            setErrorDialogEmail('')
+            setErrFirstName('')
         }
 
-        if (phoneValue !== '' && phoneValue.length != 8) {
-            setErrorDialogPhone("Indsæt venligst er gyldigt telefonnummer")
+        if (lastNameValue === '') {
+            setErrLastNameValue("Indtast efternavn")
             isValid = false
         } else {
-            setErrorDialogPhone('')
+            setErrLastNameValue('')
+        }
+
+        if (emailValue === '') {
+            setErrEmail("Indtast email")
+            isValid = false
+        } else if (!regex.test(emailValue)) {
+            setErrEmail("Indtast gyldig email")
+            isValid = false
+        } else {
+            setErrEmail('')
+        }
+
+        if (phoneValue.length != 8) {
+            setErrPhone("Indtast gyldig telefonnummer")
+            isValid = false
+        } else {
+            setErrPhone('')
         }
 
         if (messageValue === '') {
-            setErrorDialogMessage("Skriv venligst en besked")
+            setErrMessage("Indtast en besked")
             isValid = false
         } else {
-            setErrorDialogMessage('')
+            setErrMessage('')
         }
 
         return isValid
-    }, [emailValue, messageValue, phoneValue])
+    }, [firstNameValue, lastNameValue, emailValue, phoneValue, messageValue])
 
     return (
         <>
-            <form noValidate onSubmit={handleSubmit} className="bg-blue-200 grid gap-4 p-6 sm:p-8">
-                <input
-                    className="p-4 rounded-full"
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Email"
-                    value={emailValue}
-                    onChange={(e) => setEmailValue(e.target.value)}
-                />
-                <p className="text-red-700">{errorDialogEmail}</p>
+            <form noValidate onSubmit={handleSubmit} className="p-6 bg-black">
+                <h2 className="text-white text-2xl font-bold mb-4">Smid en besked</h2>
+                <section className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <input
+                            className="p-4 w-full"
+                            type="text"
+                            id="firstname"
+                            name="firstname"
+                            placeholder="Fornavn"
+                            value={firstNameValue}
+                            onChange={(e) => setFirstNameValue(e.target.value)}
+                        />
+                        <p className="text-red-500 font-bold">{errFirstName}</p>
+                    </div>
 
-                <input
-                    className="p-4 rounded-full"
-                    type="text"
-                    id="phone"
-                    name="phone"
-                    placeholder="Telefon*"
-                    value={phoneValue.replace(/[^\d]/g, "")}
-                    onChange={(e) => setPhoneValue(e.target.value)}
-                />
-                <p className="text-red-700">{errorDialogPhone}</p>
+                    <div>
+                        <input
+                            className="p-4 w-full"
+                            type="text"
+                            id="lastname"
+                            name="lastname"
+                            placeholder="Efternavn"
+                            value={lastNameValue}
+                            onChange={(e) => setLastNameValue(e.target.value)}
+                        />
+                        <p className="text-red-500 font-bold">{errLastNameValue}</p>
+                    </div>
 
-                <textarea
-                    className="p-4 h-[200px]  resize-none rounded-2xl"
-                    id="message"
-                    name="message"
-                    placeholder="Besked"
-                    value={messageValue}
-                    onChange={(e) => setMessageValue(e.target.value)}
-                />
-                <p className="text-red-700">{errorDialogMessage}</p>
+                    <div>
+                        <input
+                            className="p-4 w-full"
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Email"
+                            value={emailValue}
+                            onChange={(e) => setEmailValue(e.target.value)}
+                        />
+                        <p className="text-red-500 font-bold">{errEmail}</p>
+                    </div>
 
+                    <div>
+                        <input
+                            className="p-4 w-full"
+                            type="text"
+                            id="phone"
+                            name="phone"
+                            placeholder="Telefonnummer"
+                            value={phoneValue.replace(/[^\d]/g, "")}
+                            onChange={(e) => setPhoneValue(e.target.value)}
+                        />
+                        <p className="text-red-500 font-bold">{errPhone}</p>
+                    </div>
+                </section>
 
-                <button className="bg-green-500 w-[100px] px-6 py-3"
-                    type="submit"
-                    value="Submit">
-                    Submit
-                </button>
+                <div className="my-4">
+                    <textarea
+                        className="p-4 h-[200px] w-full resize-none"
+                        id="message"
+                        name="message"
+                        placeholder="Besked"
+                        value={messageValue}
+                        onChange={(e) => setMessageValue(e.target.value)}
+                    />
+                    <p className="text-red-500 font-bold">{errMessage}</p>
+                </div>
+                <div className="flex items-center gap-8">
+                    <button className="bg-white w-[200px] px-6 py-3"
+                        type="submit"
+                        value="Submit">
+                        Send besked
+                    </button>
+                    <p className="text-green-500 font-bold">{succes}</p>
+                </div>
             </form>
-            <h3>{succesDialog}</h3>
+
         </>
     );
 }
