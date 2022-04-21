@@ -9,7 +9,6 @@ const Accodion = () => {
     useEffect(() => {
         axios.get('https://nightout.webexam-mcdm.dk/api/faq')
             .then(response => {
-                console.log(response);
                 setData(response.data)
             })
             .catch((error) => {
@@ -18,7 +17,7 @@ const Accodion = () => {
     }, []);
 
     return (
-        <section className="bg-black pb-6 px-6">
+        <section className="bg-black">
             <h2 className="text-white text-2xl font-bold mb-4">Ofte stil­le­de spørgs­mål</h2>
             {
                 data.map((item) => {

@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 
 const LinkItem = (props) => {
@@ -10,7 +9,6 @@ const LinkItem = (props) => {
             to={props.path} >
             {props.title}
         </NavLink>
-
     )
 }
 

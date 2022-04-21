@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import axios from 'axios';
 
 const ContactForm = () => {
@@ -8,8 +8,6 @@ const ContactForm = () => {
     const [emailValue, setEmailValue] = useState('')
     const [phoneValue, setPhoneValue] = useState('')
     const [messageValue, setMessageValue] = useState('')
-
-
     const [errFirstName, setErrFirstName] = useState('')
     const [errLastNameValue, setErrLastNameValue] = useState('')
     const [errEmail, setErrEmail] = useState('')
@@ -25,6 +23,7 @@ const ContactForm = () => {
             return false
         }
 
+        // POST input value to API
         axios.post('https://nightout.webexam-mcdm.dk/api/contact', {
             firstname: firstNameValue,
             lastname: lastNameValue,
@@ -33,7 +32,6 @@ const ContactForm = () => {
             message: messageValue,
         })
             .then((response) => {
-                console.log(response);
                 handleReset()
                 setSucces('Beskeden blev sendt')
             })
@@ -45,6 +43,8 @@ const ContactForm = () => {
 
     // Reset input
     const handleReset = () => {
+        setFirstNameValue('')
+        setLastNameValue('')
         setEmailValue('')
         setPhoneValue('')
         setMessageValue('')
@@ -98,12 +98,14 @@ const ContactForm = () => {
 
     return (
         <>
-            <form noValidate onSubmit={handleSubmit} className="p-6 bg-black">
+          
+            <form noValidate onSubmit={handleSubmit} className="bg-black p-6 xs:max-w-[600px] sm:max-w-[600px] lg:max-w-[700px]">
                 <h2 className="text-white text-2xl font-bold mb-4">Smid en besked</h2>
                 <section className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Firstname input */}
                     <div>
                         <input
-                            className="p-4 w-full"
+                            className="p-3 w-full"
                             type="text"
                             id="firstname"
                             name="firstname"
@@ -114,9 +116,10 @@ const ContactForm = () => {
                         <p className="text-red-500 font-bold">{errFirstName}</p>
                     </div>
 
+                    {/* Lastname input */}
                     <div>
                         <input
-                            className="p-4 w-full"
+                            className="p-3 w-full"
                             type="text"
                             id="lastname"
                             name="lastname"
@@ -127,9 +130,10 @@ const ContactForm = () => {
                         <p className="text-red-500 font-bold">{errLastNameValue}</p>
                     </div>
 
+                    {/* Email input */}
                     <div>
                         <input
-                            className="p-4 w-full"
+                            className="p-3 w-full"
                             type="email"
                             id="email"
                             name="email"
@@ -140,9 +144,10 @@ const ContactForm = () => {
                         <p className="text-red-500 font-bold">{errEmail}</p>
                     </div>
 
+                    {/* Phone input */}
                     <div>
                         <input
-                            className="p-4 w-full"
+                            className="p-3 w-full"
                             type="text"
                             id="phone"
                             name="phone"
@@ -154,9 +159,10 @@ const ContactForm = () => {
                     </div>
                 </section>
 
+                {/* Message input */}
                 <div className="my-4">
                     <textarea
-                        className="p-4 h-[200px] w-full resize-none"
+                        className="flex p-3 h-[150px] w-full resize-none"
                         id="message"
                         name="message"
                         placeholder="Besked"
@@ -165,8 +171,10 @@ const ContactForm = () => {
                     />
                     <p className="text-red-500 font-bold">{errMessage}</p>
                 </div>
-                <div className="flex items-center gap-8">
-                    <button className="bg-white w-[200px] px-6 py-3"
+
+                {/* Submit button */}
+                <div className="flex flex-col xs:flex-row items-center gap-4">
+                    <button className="bg-white w-full xs:w-[140px] py-3"
                         type="submit"
                         value="Submit">
                         Send besked
@@ -174,8 +182,8 @@ const ContactForm = () => {
                     <p className="text-green-500 font-bold">{succes}</p>
                 </div>
             </form>
-
         </>
+
     );
 }
 

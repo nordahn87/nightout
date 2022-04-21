@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import NavigationLinks from './navigation/links'
 import Logo from './misc/logo'
 
@@ -18,9 +18,9 @@ const Navigation = () => {
 
     return (
         <>
-            <nav 
+            <nav
                 className='bg-black fixed flex w-full justify-between items-center p-6 z-50'>
-                <Logo 
+                <Logo
                     className="text-white"
                     onClick={() => setMobileNavigation(false)} />
                 <div>
@@ -34,11 +34,11 @@ const Navigation = () => {
                         onClick={toogleMobileNavigation}>
                         <i className={(mobileNavigation ? 'la-times' : 'la-bars') + ' las la-lg text-white'}></i>
                     </button>
-                </div> 
+                </div>
             </nav>
 
             {/* Mobile dropdown */}
-            <nav className={(mobileNavigation ? 'top-0' : 'top-[-100vh]') + ' fixed bg-black h-screen w-full flex justify-center items-center transition-all'}>
+            <nav className={(mobileNavigation ? 'top-0' : 'top-[-100vh]') + ' fixed bg-black h-screen w-full flex justify-center items-center transition-all z-40'}>
                 <div className="flex flex-col gap-4">
                     <NavigationLinks
                         className="text-white text-lg hover:underline"
