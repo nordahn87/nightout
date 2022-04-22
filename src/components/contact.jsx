@@ -10,7 +10,7 @@ const Contact = () => {
                 </div>
             </div>
 
-            <div className="absolute right-0 top-[72px] overflow-hidden w-[65%] sm:w-[72%]  lg:w-[70%] h-[600px] hund">
+            <div className="absolute right-0 top-[70px] overflow-hidden w-[70vw] h-[600px] -z-10">
                 <img src="./assets/contact-bg.jpg" className='object-cover h-[900px] lg:h-[1000px] xl:h-[1100px] w-full' />
             </div>
             <Accodion />

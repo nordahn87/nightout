@@ -12,7 +12,7 @@ const App = () => {
   return (
     <>
       <Navigation />
-      <div className="h-[72px]"></div>
+      <div className="h-[70px]"></div>
       <ScrollToTop>
         <Main>
           <Routes>

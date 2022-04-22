@@ -33,6 +33,12 @@ p {
 .transition-03 {
   transition: .3s ease-in-out
 }
+.transition-04 {
+  transition: .4s ease-in-out
+}
+.transition-05 {
+  transition: .5s ease-in-out
+}
 
 input, textarea {
   background-color: #171717;;
@@ -49,8 +55,6 @@ input::placeholder, textarea::placeholder   {
   }
 }
 
-/* LAST-CHILD */
-
 .accordion-wrapper:last-child {
   border-bottom: 1px solid white;
 }
@@ -58,6 +62,10 @@ input::placeholder, textarea::placeholder   {
   display: none;
 }
 
-.hund {
-  z-index: -1;
+.disable-scroll {
+  overflow-y: hidden;
+}
+
+.polle {
+   transition: opacity .5s ease-in-out;
 }

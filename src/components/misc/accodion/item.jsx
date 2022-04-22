@@ -11,10 +11,10 @@ const AccordionItem = (props) => {
     return (
         <section className="accordion-wrapper">
             <div
-                className="bg-white text-lg flex justify-between items-center p-4 border-t  border-neutral-300"
+                className="bg-white text-lg flex justify-between items-center p-4 border-t  border-neutral-300 group"
                 role="button"
                 onClick={toogleAccordion}>
-                <h3 className="hover:underline">{props.question}</h3>
+                <h3 className="group-hover:underline">{props.question}</h3>
                 <i className={(toggleleAccordion ? 'la-times' : 'la-plus') + ' las la-lg'}></i>
             </div>
             
