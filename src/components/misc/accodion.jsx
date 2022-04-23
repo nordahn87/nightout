@@ -17,7 +17,7 @@ const Accodion = () => {
     }, []);
 
     return (
-        <section className="bg-black">
+        <section className="bg-black p-4">
             <h2 className="text-white text-2xl font-bold mb-4">Ofte stil­le­de spørgs­mål</h2>
             {
                 data.map((item) => {

@@ -12,7 +12,6 @@ const Gallery = () => {
 
     /* Fetch gallery API */
     useEffect(() => {
-
         axios.get('https://nightout.webexam-mcdm.dk/api/images')
             .then(response => {
                 setData(response.data)

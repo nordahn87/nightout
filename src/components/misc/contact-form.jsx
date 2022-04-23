@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 import axios from 'axios';
 
-const ContactForm = () => {
+const ContactForm = (props) => {
 
     const [firstNameValue, setFirstNameValue] = useState('')
     const [lastNameValue, setLastNameValue] = useState('')
@@ -100,95 +100,90 @@ const ContactForm = () => {
         setMessageValue('')
     }
 
-
     return (
-        <>
-
-            <form noValidate onSubmit={handleSubmit} className="bg-black p-6 xs:max-w-[600px] sm:max-w-[600px] lg:max-w-[700px]">
-                <h2 className="text-white text-2xl font-bold mb-4">Smid en besked</h2>
-                <section className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Firstname input */}
-                    <div>
-                        <input
-                            className={(errFirstName !== '' ? 'error' : '') + ' p-3 w-full'}
-                            type="text"
-                            id="firstname"
-                            name="firstname"
-                            placeholder="Fornavn"
-                            value={firstNameValue}
-                            onChange={(e) => setFirstNameValue(e.target.value)}
-                        />
-                        <p className="text-red-500 font-bold">{errFirstName}</p>
-                    </div>
-
-                    {/* Lastname input */}
-                    <div>
-                        <input
-                            className={(errLastName !== '' ? 'error' : '') + ' p-3 w-full'}
-                            type="text"
-                            id="lastname"
-                            name="lastname"
-                            placeholder="Efternavn"
-                            value={lastNameValue}
-                            onChange={(e) => setLastNameValue(e.target.value)}
-                        />
-                        <p className="text-red-500 font-bold">{errLastName}</p>
-                    </div>
-
-                    {/* Email input */}
-                    <div>
-                        <input
-                            className={(errEmail !== '' ? 'error' : '') + ' p-3 w-full'}
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="Email"
-                            value={emailValue}
-                            onChange={(e) => setEmailValue(e.target.value)}
-                        />
-                        <p className="text-red-500 font-bold">{errEmail}</p>
-                    </div>
-
-                    {/* Phone input */}
-                    <div>
-                        <input
-                            className={(errPhone !== '' ? 'error' : '') + ' p-3 w-full'}
-                            type="text"
-                            id="phone"
-                            name="phone"
-                            placeholder="Telefonnummer"
-                            value={phoneValue.replace(/[^\d]/g, "")}
-                            onChange={(e) => setPhoneValue(e.target.value)}
-                        />
-                        <p className="text-red-500 font-bold">{errPhone}</p>
-                    </div>
-                </section>
-
-                {/* Message input */}
-                <div className="my-4">
-                    <textarea
-                        className={(errMessage !== '' ? 'error' : '') + ' flex p-3 h-[150px] w-full resize-non'}
-                        id="message"
-                        name="message"
-                        placeholder="Besked"
-                        value={messageValue}
-                        onChange={(e) => setMessageValue(e.target.value)}
+        <form noValidate onSubmit={handleSubmit} className={props.className}>
+            <h2 className="text-white text-2xl font-bold mb-4">Smid en besked</h2>
+            <section className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Firstname input */}
+                <div>
+                    <input
+                        className={(errFirstName !== '' ? 'error' : '') + ' p-3 w-full'}
+                        type="text"
+                        id="firstname"
+                        name="firstname"
+                        placeholder="Fornavn"
+                        value={firstNameValue}
+                        onChange={(e) => setFirstNameValue(e.target.value)}
                     />
-                    <p className="text-red-500 font-bold">{errMessage}</p>
+                    <p className="text-red-500 font-bold">{errFirstName}</p>
                 </div>
 
-                {/* Submit button */}
-                <div className="flex flex-col xs:flex-row items-center gap-4">
-                    <button className="bg-white w-full xs:w-[140px] py-3"
-                        type="submit"
-                        value="Submit">
-                        Send besked
-                    </button>
-                    <p className="text-green-500 text-lg sm:text-xl font-bold">{succes}</p>
+                {/* Lastname input */}
+                <div>
+                    <input
+                        className={(errLastName !== '' ? 'error' : '') + ' p-3 w-full'}
+                        type="text"
+                        id="lastname"
+                        name="lastname"
+                        placeholder="Efternavn"
+                        value={lastNameValue}
+                        onChange={(e) => setLastNameValue(e.target.value)}
+                    />
+                    <p className="text-red-500 font-bold">{errLastName}</p>
                 </div>
-            </form>
-        </>
 
+                {/* Email input */}
+                <div>
+                    <input
+                        className={(errEmail !== '' ? 'error' : '') + ' p-3 w-full'}
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Email"
+                        value={emailValue}
+                        onChange={(e) => setEmailValue(e.target.value)}
+                    />
+                    <p className="text-red-500 font-bold">{errEmail}</p>
+                </div>
+
+                {/* Phone input */}
+                <div>
+                    <input
+                        className={(errPhone !== '' ? 'error' : '') + ' p-3 w-full'}
+                        type="text"
+                        id="phone"
+                        name="phone"
+                        placeholder="Telefonnummer"
+                        value={phoneValue.replace(/[^\d]/g, "")}
+                        onChange={(e) => setPhoneValue(e.target.value)}
+                    />
+                    <p className="text-red-500 font-bold">{errPhone}</p>
+                </div>
+            </section>
+
+            {/* Message input */}
+            <div className="my-4">
+                <textarea
+                    className={(errMessage !== '' ? 'error' : '') + ' flex p-3 h-[110px] w-full resize-non'}
+                    id="message"
+                    name="message"
+                    placeholder="Besked"
+                    value={messageValue}
+                    onChange={(e) => setMessageValue(e.target.value)}
+                />
+                <p className="text-red-500 font-bold">{errMessage}</p>
+            </div>
+
+            {/* Submit button */}
+            <div className="flex flex-col xs:flex-row items-center gap-4">
+                <button className="bg-white w-full xs:w-[140px] py-3"
+                    type="submit"
+                    value="Submit">
+                    Send besked
+                </button>
+                <p className="text-green-500 text-lg sm:text-xl font-bold">{succes}</p>
+            </div>
+        </form>
     );
 }
 

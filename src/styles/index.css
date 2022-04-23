@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -36,10 +36,8 @@ p {
 .transition-04 {
   transition: .4s ease-in-out
 }
-.transition-05 {
-  transition: .5s ease-in-out
-}
 
+/* Inputs */
 input, textarea {
   background-color: #171717;;
   color: white;
@@ -62,14 +60,16 @@ input::placeholder, textarea::placeholder   {
   display: none;
 }
 
+/* classList */
 .disable-scroll {
   overflow-y: hidden;
 }
 
-.polle {
-   transition: opacity .5s ease-in-out;
-}
-
 .error {
   border: solid 1px red;
+}
+
+
+.test {
+  height: min(100vh, 500px); 
 }

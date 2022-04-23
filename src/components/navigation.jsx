@@ -6,10 +6,12 @@ const Navigation = () => {
 
     const [mobileNavigation, setMobileNavigation] = useState(false)
 
+    /* Toggles mobile navigation */
     const toogleMobileNavigation = () => {
         setMobileNavigation(!mobileNavigation)
     }
 
+    /* Closes mobile navigation if browser changes size */
     window.addEventListener("resize", () => {
         if (window.innerWidth > 640) {
             setMobileNavigation(false)
@@ -18,6 +20,7 @@ const Navigation = () => {
 
     return (
         <>
+            {/* Navigation */}
             <nav className='bg-black fixed flex items-center w-full z-50 py-6 h-[70px]'>
                 <div className="flex w-[1366px] mx-auto justify-between items-center px-6">
                     <Logo
@@ -34,7 +37,7 @@ const Navigation = () => {
                         <button
                             className="sm:hidden flex justify-center items-center"
                             onClick={toogleMobileNavigation}>
-                            <i className={(mobileNavigation ? 'la-times' : 'la-bars') + ' las la-2x text-white'}></i>
+                            <i className={(mobileNavigation ? 'la-times' : 'la-bars') + ' las text-2xl text-white'}></i>
                         </button>
                     </div>
                 </div>

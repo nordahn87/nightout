@@ -1,14 +1,17 @@
 import Header from './header'
 import Cards from './misc/cards'
 import Gallery from './misc/gallery'
+import Main from './main'
 
 const Home = () => {
     return (
-        <section>
+        <>
             <Header />
-            <Cards />
-            <Gallery />
-        </section>
+            <Main className="max-w-[1366px]">
+                <Cards />
+                <Gallery />
+            </Main>
+        </>
     )
 }
 

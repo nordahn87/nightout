@@ -20,7 +20,7 @@ const Footer = () => {
                 </div>
 
                 {/* Copyright */}
-                <p>Copyright &copy; 2022 Nightout</p>
+                <p text-center>Copyright &copy; 2022 Nightout</p>
             </div>
         </footer>
     )

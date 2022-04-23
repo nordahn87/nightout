@@ -17,7 +17,7 @@ const Header = () => {
     }
 
     return ( 
-        <header className="relative mb-16">
+        <header className="relative mb-16 max-w-[1366px] mx-auto">
             <div className="absolute grid grid-cols-2 w-full h-full p-6 z-10">
                 <div className="flex items-center ">
                     <div>

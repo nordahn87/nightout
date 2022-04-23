@@ -11,7 +11,7 @@ const AccordionItem = (props) => {
     return (
         <section className="accordion-wrapper">
             <div
-                className="bg-white text-lg flex justify-between items-center p-4 border-t  border-neutral-300 group"
+                className="bg-white text-lg flex justify-between items-center p-4 border-t sm:border-0 border-neutral-300 group"
                 role="button"
                 onClick={toogleAccordion}>
                 <h3 className="group-hover:underline">{props.question}</h3>
