@@ -30,6 +30,7 @@ const Drinks = () => {
                     alt="Billede af en gruppe kvinder med drinks i hånden"
                 />
             </div>
+            
             {
                 data.map((item) => {
                     return (

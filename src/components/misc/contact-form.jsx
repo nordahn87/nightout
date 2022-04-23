@@ -9,11 +9,61 @@ const ContactForm = () => {
     const [phoneValue, setPhoneValue] = useState('')
     const [messageValue, setMessageValue] = useState('')
     const [errFirstName, setErrFirstName] = useState('')
-    const [errLastNameValue, setErrLastNameValue] = useState('')
+    const [errLastName, setErrLastName] = useState('')
     const [errEmail, setErrEmail] = useState('')
     const [errPhone, setErrPhone] = useState('')
     const [errMessage, setErrMessage] = useState('')
     const [succes, setSucces] = useState('')
+
+    // Validate input
+    const handleValidation = useCallback(() => {
+        const regex = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        let isValid = true
+
+        if (firstNameValue === '') {
+            setErrFirstName("Indtast fornavn")
+            isValid = false
+        } else {
+            setErrFirstName('')
+        }
+
+        if (lastNameValue === '') {
+            setErrLastName("Indtast efternavn")
+            isValid = false
+        } else {
+            setErrLastName('')
+        }
+
+        if (emailValue === '') {
+            setErrEmail("Indtast email")
+
+            isValid = false
+        } else if (!regex.test(emailValue)) {
+            setErrEmail("Indtast gyldig email")
+            isValid = false
+        } else {
+            setErrEmail('')
+        }
+
+        if (phoneValue.length !== 8) {
+            setErrPhone("Indtast gyldig telefonnummer")
+
+            isValid = false
+        } else {
+            setErrPhone('')
+        }
+
+        if (messageValue === '') {
+            setErrMessage("Indtast en besked")
+
+            isValid = false
+        } else {
+            setErrMessage('')
+
+        }
+
+        return isValid
+    }, [firstNameValue, lastNameValue, emailValue, phoneValue, messageValue])
 
     // Handles form on submit
     const handleSubmit = useCallback((e) => {
@@ -39,7 +89,7 @@ const ContactForm = () => {
                 console.log(error);
             })
 
-    }, [firstNameValue, lastNameValue, emailValue, phoneValue, messageValue])
+    }, [firstNameValue, lastNameValue, emailValue, phoneValue, messageValue, handleValidation])
 
     // Reset input
     const handleReset = () => {
@@ -50,62 +100,17 @@ const ContactForm = () => {
         setMessageValue('')
     }
 
-    // Validate input
-    const handleValidation = useCallback(() => {
-        const regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        let isValid = true
-
-        if (firstNameValue === '') {
-            setErrFirstName("Indtast fornavn")
-            isValid = false
-        } else {
-            setErrFirstName('')
-        }
-
-        if (lastNameValue === '') {
-            setErrLastNameValue("Indtast efternavn")
-            isValid = false
-        } else {
-            setErrLastNameValue('')
-        }
-
-        if (emailValue === '') {
-            setErrEmail("Indtast email")
-            isValid = false
-        } else if (!regex.test(emailValue)) {
-            setErrEmail("Indtast gyldig email")
-            isValid = false
-        } else {
-            setErrEmail('')
-        }
-
-        if (phoneValue.length != 8) {
-            setErrPhone("Indtast gyldig telefonnummer")
-            isValid = false
-        } else {
-            setErrPhone('')
-        }
-
-        if (messageValue === '') {
-            setErrMessage("Indtast en besked")
-            isValid = false
-        } else {
-            setErrMessage('')
-        }
-
-        return isValid
-    }, [firstNameValue, lastNameValue, emailValue, phoneValue, messageValue])
 
     return (
         <>
-          
+
             <form noValidate onSubmit={handleSubmit} className="bg-black p-6 xs:max-w-[600px] sm:max-w-[600px] lg:max-w-[700px]">
                 <h2 className="text-white text-2xl font-bold mb-4">Smid en besked</h2>
                 <section className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Firstname input */}
                     <div>
                         <input
-                            className="p-3 w-full"
+                            className={(errFirstName !== '' ? 'error' : '') + ' p-3 w-full'}
                             type="text"
                             id="firstname"
                             name="firstname"
@@ -119,7 +124,7 @@ const ContactForm = () => {
                     {/* Lastname input */}
                     <div>
                         <input
-                            className="p-3 w-full"
+                            className={(errLastName !== '' ? 'error' : '') + ' p-3 w-full'}
                             type="text"
                             id="lastname"
                             name="lastname"
@@ -127,13 +132,13 @@ const ContactForm = () => {
                             value={lastNameValue}
                             onChange={(e) => setLastNameValue(e.target.value)}
                         />
-                        <p className="text-red-500 font-bold">{errLastNameValue}</p>
+                        <p className="text-red-500 font-bold">{errLastName}</p>
                     </div>
 
                     {/* Email input */}
                     <div>
                         <input
-                            className="p-3 w-full"
+                            className={(errEmail !== '' ? 'error' : '') + ' p-3 w-full'}
                             type="email"
                             id="email"
                             name="email"
@@ -147,7 +152,7 @@ const ContactForm = () => {
                     {/* Phone input */}
                     <div>
                         <input
-                            className="p-3 w-full"
+                            className={(errPhone !== '' ? 'error' : '') + ' p-3 w-full'}
                             type="text"
                             id="phone"
                             name="phone"
@@ -162,7 +167,7 @@ const ContactForm = () => {
                 {/* Message input */}
                 <div className="my-4">
                     <textarea
-                        className="flex p-3 h-[150px] w-full resize-none"
+                        className={(errMessage !== '' ? 'error' : '') + ' flex p-3 h-[150px] w-full resize-non'}
                         id="message"
                         name="message"
                         placeholder="Besked"
@@ -179,7 +184,7 @@ const ContactForm = () => {
                         value="Submit">
                         Send besked
                     </button>
-                    <p className="text-green-500 font-bold">{succes}</p>
+                    <p className="text-green-500 text-lg sm:text-xl font-bold">{succes}</p>
                 </div>
             </form>
         </>

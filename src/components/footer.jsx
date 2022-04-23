@@ -1,5 +1,3 @@
-import { NavLink } from 'react-router-dom'
-
 const Footer = () => {
     return (
         <footer className="bg-black flex justify-center h-[200px] p-12">
@@ -8,16 +6,16 @@ const Footer = () => {
 
                     {/* Facebook icon */}
                     <div className="flex justify-center items-center">
-                        <NavLink to="/">
+                        <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
                             <i className="lab la-facebook-f text-5xl text-white"></i>
-                        </NavLink>
+                        </a>
                     </div>
 
                     {/* Instagram icon */}
                     <div className="flex justify-center items-center">
-                        <NavLink to="/">
+                        <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
                             <i className="lab la-instagram text-6xl text-white"></i>
-                        </NavLink>
+                        </a>
                     </div>
                 </div>
 

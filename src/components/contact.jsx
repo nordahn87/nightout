@@ -11,7 +11,7 @@ const Contact = () => {
             </div>
 
             <div className="absolute right-0 top-[70px] overflow-hidden w-[70vw] h-[600px] -z-10">
-                <img src="./assets/contact-bg.jpg" className='object-cover h-[900px] lg:h-[1000px] xl:h-[1100px] w-full' />
+                <img src="./assets/contact-bg.jpg" alt="Billede af en mand i kostume" className='object-cover h-[900px] lg:h-[1000px] xl:h-[1100px] w-full' />
             </div>
             <Accodion />
         </section>

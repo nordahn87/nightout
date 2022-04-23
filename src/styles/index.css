@@ -69,3 +69,7 @@ input::placeholder, textarea::placeholder   {
 .polle {
    transition: opacity .5s ease-in-out;
 }
+
+.error {
+  border: solid 1px red;
+}
