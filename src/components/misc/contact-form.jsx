@@ -13,7 +13,7 @@ const ContactForm = (props) => {
     const [errEmail, setErrEmail] = useState('')
     const [errPhone, setErrPhone] = useState('')
     const [errMessage, setErrMessage] = useState('')
-    const [succes, setSucces] = useState('')
+    const [dialogText, setDialogText] = useState('')
 
     // Validate input
     const handleValidation = useCallback(() => {
@@ -47,7 +47,6 @@ const ContactForm = (props) => {
 
         if (phoneValue.length !== 8) {
             setErrPhone("Indtast gyldig telefonnummer")
-
             isValid = false
         } else {
             setErrPhone('')
@@ -55,11 +54,15 @@ const ContactForm = (props) => {
 
         if (messageValue === '') {
             setErrMessage("Indtast en besked")
-
             isValid = false
         } else {
             setErrMessage('')
+        }
 
+        if (isValid === false) {
+            setDialogText("Udfyld manglende felter")
+        } else {
+            setDialogText('')
         }
 
         return isValid
@@ -81,9 +84,9 @@ const ContactForm = (props) => {
             phone: phoneValue,
             message: messageValue,
         })
-            .then((response) => {
+            .then(() => {
                 handleReset()
-                setSucces('Beskeden blev sendt')
+                setDialogText('Beskeden blev sendt')
             })
             .catch((error) => {
                 console.log(error);
@@ -154,6 +157,7 @@ const ContactForm = (props) => {
                         id="phone"
                         name="phone"
                         placeholder="Telefonnummer"
+                        maxlength="8"
                         value={phoneValue.replace(/[^\d]/g, "")}
                         onChange={(e) => setPhoneValue(e.target.value)}
                     />
@@ -164,7 +168,7 @@ const ContactForm = (props) => {
             {/* Message input */}
             <div className="my-4">
                 <textarea
-                    className={(errMessage !== '' ? 'error' : '') + ' flex p-3 h-[110px] w-full resize-non'}
+                    className={(errMessage !== '' ? 'error' : '') + ' flex p-3 h-[110px] w-full resize-none'}
                     id="message"
                     name="message"
                     placeholder="Besked"
@@ -181,7 +185,7 @@ const ContactForm = (props) => {
                     value="Submit">
                     Send besked
                 </button>
-                <p className="text-green-500 text-lg sm:text-xl font-bold">{succes}</p>
+                <p className="text-white text-lg sm:text-xl font-bold">{dialogText}Beskeden blev sendt</p>
             </div>
         </form>
     );

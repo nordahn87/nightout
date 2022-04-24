@@ -77,36 +77,40 @@ const Gallery = () => {
                 className={(showModal ? 'flex opacity-100' : 'invisible opacity-0') + ' bg-black bg-opacity-95 fixed top-0 left-0 w-full h-full z-50 flex flex-col transition-02'}>
 
                 {/* Close button */}
-                <div className="z-10  py-2 px-4 flex justify-end text-white">
+                <div className="z-10 absolute right-[2%] top-[2%] ">
                     <button onClick={toggleModal}>
                         <i className={'las la-times text-white text-4xl p-2'}></i>
                     </button>
                 </div>
 
-                <section className="grid grid-cols-12">
+                <div className="h-full w-full flex items-center justify-center ">
+                    <section className="grid grid-cols-12 w-full">
 
-                    {/* Prev slider button */}
-                    <button onClick={handlePrevSlide} className="grid col-span-1 justify-center items-center cursor-pointer hover:bg-white hover:bg-opacity-25 transition-02">
-                        <i className="las la-angle-left text-2xl xs:text-4xl text-white"></i>
-                    </button>
+                        {/* Prev slider button */}
+                        <button onClick={handlePrevSlide} className="grid col-span-1 justify-center items-center cursor-pointer hover:bg-white hover:bg-opacity-25 transition-02">
+                            <i className="las la-angle-left text-4xl text-white"></i>
+                        </button>
 
-                    {/* Image container */}
-                    <div className="flex flex-col h-full justify-center items-center grid  col-span-10">
-                        <img
-                            className={(showModal ? 'scale-100 opacity-100' : 'scale-0 opacity-0') + ' object-contain h-[80vh] p-2 transition-04'}
-                            src={modalImg}
-                            alt={modalTitle}
-                        />
-                        <div className="flex w-full  relative justify-center">
-                            <p className={(showModal ? 'top-0 opacity-100' : 'top-[50px] opacity-0') + ' absolute  text-white text-lg transition-04'}>{modalTitle}</p>
+                        {/* Image container */}
+                        <div className="flex flex-col h-full justify-center items-center grid  col-span-10">
+                            <img
+                                className={(showModal ? 'scale-100 opacity-100' : 'scale-0 opacity-0') + ' object-contain h-[75vh] p-2 transition-04'}
+                                src={modalImg}
+                                alt={modalTitle}
+                            />
+                            <div className="flex w-full  relative justify-center">
+                                <p className={(showModal ? 'top-0 opacity-100' : 'top-[50px] opacity-0') + ' absolute text-white text-sm md:text-lg transition-04'}>{modalTitle}</p>
+                            </div>
                         </div>
-                    </div>
 
-                    {/* Next slider button */}
-                    <button onClick={handleNextSlide} className="grid col-span-1 justify-center items-center cursor-pointer hover:bg-white hover:bg-opacity-25 transition-02">
-                        <i className="las la-angle-right text-2xl xs:text-4xl text-white"></i>
-                    </button>
-                </section>
+                        {/* Next slider button */}
+                        <button onClick={handleNextSlide} className="grid col-span-1 justify-center items-center cursor-pointer hover:bg-white hover:bg-opacity-25 transition-02 ">
+                            <i className="las la-angle-right text-4xl text-white"></i>
+                        </button>
+                    </section>
+                </div>
+
+
             </section>
 
             {/* Gallery images */}

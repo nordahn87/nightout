@@ -24,17 +24,17 @@ p {
 /* TRANSITIONS */
 
 .transition-max-h {
-  transition: max-height .2s ease-in-out
+  transition: max-height .2s ease-in-out;
 }
 
 .transition-02 {
-  transition: .2s ease-in-out
+  transition: .2s ease-in-out;
 }
 .transition-03 {
-  transition: .3s ease-in-out
+  transition: .3s ease-in-out;
 }
 .transition-04 {
-  transition: .4s ease-in-out
+  transition: .4s ease-in-out;
 }
 
 /* Inputs */
@@ -67,9 +67,4 @@ input::placeholder, textarea::placeholder   {
 
 .error {
   border: solid 1px red;
-}
-
-
-.test {
-  height: min(100vh, 500px); 
 }

@@ -20,7 +20,7 @@ const Header = () => {
         <header className="relative mb-16 max-w-[1366px] mx-auto">
             <div className="absolute grid grid-cols-2 w-full h-full p-6 z-10">
                 <div className="flex items-center ">
-                    <div>
+                    <div className="z-30">
 
                         {/* Headings*/}
                         <h1 className="text-white text-4xl font-bold mb-4">Nightout</h1>
