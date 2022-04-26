@@ -21,8 +21,7 @@ p {
   @apply text-base
 }
 
-/* TRANSITIONS */
-
+/* Transitions */
 .transition-max-h {
   transition: max-height .2s ease-in-out;
 }
@@ -37,7 +36,7 @@ p {
   transition: .4s ease-in-out;
 }
 
-/* Inputs */
+/* Inputs style */
 input, textarea {
   background-color: #171717;;
   color: white;

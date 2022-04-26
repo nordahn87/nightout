@@ -107,6 +107,7 @@ const ContactForm = (props) => {
         <form noValidate onSubmit={handleSubmit} className={props.className}>
             <h2 className="text-white text-2xl font-bold mb-4">Smid en besked</h2>
             <section className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                
                 {/* Firstname input */}
                 <div>
                     <input
@@ -185,7 +186,7 @@ const ContactForm = (props) => {
                     value="Submit">
                     Send besked
                 </button>
-                <p className="text-white text-lg sm:text-xl font-bold">{dialogText}Beskeden blev sendt</p>
+                <p className="text-white text-lg sm:text-xl font-bold">{dialogText}</p>
             </div>
         </form>
     );

@@ -4,6 +4,7 @@ const AccordionItem = (props) => {
 
     const [toggleleAccordion, setToggleleAccordion] = useState(false)
 
+    // Open and close accordion
     const toogleAccordion = () => {
         setToggleleAccordion(!toggleleAccordion)
     }

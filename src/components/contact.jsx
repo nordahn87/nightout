@@ -5,6 +5,7 @@ import Accodion from './misc/accodion'
 const Contact = () => {
     return (
         <main>
+            
             {/* Form wrapper */}
             <div className="relative flex items-center justify-center sm:h-[550px] mb-16 overflow-hidden ">
                 <div className="absolute max-w-[1366px] mx-auto w-full flex items-center pr-6">

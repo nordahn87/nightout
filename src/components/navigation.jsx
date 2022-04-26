@@ -6,12 +6,12 @@ const Navigation = () => {
 
     const [mobileNavigation, setMobileNavigation] = useState(false)
 
-    /* Toggles mobile navigation */
+    // Toggles mobile navigation
     const toogleMobileNavigation = () => {
         setMobileNavigation(!mobileNavigation)
     }
 
-    /* Closes mobile navigation if browser changes size */
+    // Closes mobile navigation if browser changes size
     window.addEventListener("resize", () => {
         if (window.innerWidth > 640) {
             setMobileNavigation(false)

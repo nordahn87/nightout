@@ -109,8 +109,6 @@ const Gallery = () => {
                         </button>
                     </section>
                 </div>
-
-
             </section>
 
             {/* Gallery images */}
