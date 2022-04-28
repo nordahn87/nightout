@@ -9,7 +9,7 @@ const Contact = () => {
             {/* Form wrapper */}
             <div className="relative flex items-center justify-center sm:h-[550px] mb-16 overflow-hidden ">
                 <div className="absolute max-w-[1366px] mx-auto w-full flex items-center pr-6">
-                    <ContactForm className="bg-black px-4 p-6  sm:p-8 max-w-[800px] w-full " />
+                    <ContactForm className="bg-black px-4 p-6 sm:p-8 max-w-[800px] w-full " />
                 </div>
 
                 {/* Background image cover */}

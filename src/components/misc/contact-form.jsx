@@ -36,7 +36,6 @@ const ContactForm = (props) => {
 
         if (emailValue === '') {
             setErrEmail("Indtast email")
-
             isValid = false
         } else if (!regex.test(emailValue)) {
             setErrEmail("Indtast gyldig email")
@@ -45,7 +44,14 @@ const ContactForm = (props) => {
             setErrEmail('')
         }
 
-        if (phoneValue.length !== 8) {
+        // if (phoneValue.length !== 8) {
+        //     setErrPhone("Indtast gyldig telefonnummer")
+        //     isValid = false
+        // } else {
+        //     setErrPhone('')
+        // }
+
+        if (phoneValue.length < 8) {
             setErrPhone("Indtast gyldig telefonnummer")
             isValid = false
         } else {
@@ -84,9 +90,17 @@ const ContactForm = (props) => {
             phone: phoneValue,
             message: messageValue,
         })
-            .then(() => {
-                handleReset()
-                setDialogText('Beskeden blev sendt')
+            .then((response) => {
+                console.log(response.data)
+                if (response.status === 201) {
+                    handleReset()
+                    setDialogText('Beskeden blev sendt')
+                    setTimeout(() => {
+                        setDialogText('')
+                    }, 3000)
+                } else {
+                    setDialogText('Hov der skete en fejl, prøv igen')
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -107,7 +121,7 @@ const ContactForm = (props) => {
         <form noValidate onSubmit={handleSubmit} className={props.className}>
             <h2 className="text-white text-2xl font-bold mb-4">Smid en besked</h2>
             <section className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                
+
                 {/* Firstname input */}
                 <div>
                     <input
@@ -117,7 +131,7 @@ const ContactForm = (props) => {
                         name="firstname"
                         placeholder="Fornavn"
                         value={firstNameValue}
-                        onChange={(e) => setFirstNameValue(e.target.value)}
+                        onChange={(e) => {setFirstNameValue(e.target.value)}}
                     />
                     <p className="text-red-500 font-bold">{errFirstName}</p>
                 </div>
@@ -154,11 +168,11 @@ const ContactForm = (props) => {
                 <div>
                     <input
                         className={(errPhone !== '' ? 'error' : '') + ' p-3 w-full'}
-                        type="text"
+                        type="tel"
                         id="phone"
                         name="phone"
                         placeholder="Telefonnummer"
-                        maxlength="8"
+                        maxLength="8"
                         value={phoneValue.replace(/[^\d]/g, "")}
                         onChange={(e) => setPhoneValue(e.target.value)}
                     />

@@ -1,0 +1,45 @@
+METHOD 1
+
+const hund = () => {
+
+    const handleKat = () => {
+        console.log("Jeg er en mis")
+    }
+
+    return (
+        <div>
+            <Hest handleKat={handleKat} />
+        </div>
+    )
+}
+
+const Hest = ({ handleKat }) => {
+    return (
+        <button onClick={handleKat}>Jeg gør noget stort</button>
+    )
+}
+
+------------------------------------------------------------------------------------------------
+
+METHOD 2
+
+const hund = () => {
+
+    const handleKat = () => {
+        console.log("Jeg er en mis")
+    }
+
+    return (
+        <div>
+            <Hest
+                handlekat={handleKat}
+            />
+        </div>
+    )
+}
+
+const Hest = (props) => {
+    return (
+        <button onClick={props.handlekat}>Jeg gør noget stort</button>
+    )
+}
